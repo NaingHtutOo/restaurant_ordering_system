@@ -42,7 +42,9 @@ class CustomerController extends Controller
 
     public function leave( Table $table )
     {
+        Order::where( 'table_id', $table->id )->delete();
         $table->status = config('res.table_status.free');
+        $table->total = 0;
         $table->save();
         
         return redirect("/casher");

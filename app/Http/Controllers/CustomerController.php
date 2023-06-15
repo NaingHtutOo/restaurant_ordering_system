@@ -110,9 +110,6 @@ class CustomerController extends Controller
 
     public function delete( Order $order )
     {
-        $table = Table::find( $order->table_id );
-        $table->total -= ( $order->quantity * $order->dish->price );
-        $table->save();
         $order->delete();
 
         return redirect("/table/$table->id");

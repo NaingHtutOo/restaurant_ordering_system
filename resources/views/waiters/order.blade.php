@@ -35,9 +35,10 @@
                     <td>{{ $order->quantity }}</td>
                     <td>{{ $status[$order->status] }}</td>
                     <td>
+                        @if ( $order->status == 1 )
                         <a class="btn btn-outline-danger" href="{{ url("/order/$order->id/delete") }}"
                             onclick="event.preventDefault();
-                            document.getElementById('order-delete-form').submit();">
+                            document.getElementById('order-delete-form').submit();" >
                             DELETE
                         </a>
 
@@ -46,6 +47,7 @@
                             @csrf
                             @method('delete')
                         </form>
+                        @endif
                     </td>
                     <td></td>
                 </tr>
@@ -174,7 +176,7 @@
 
                         <form id="" action="{{ url("/table/$table->id/add/dish/$dish->id") }}" method="POST">
                             @csrf
-                            <input type="number" class="form-control mb-3" id="quantity" name="quantity" value="{{ old('quantity', 0) }}">
+                            <input type="number" min="1" class="form-control mb-3" id="quantity" name="quantity" value="{{ old('quantity', 1) }}">
                             <button class="btn btn-success float-end">Add to Orders</button>
                         </form>
                     </div>

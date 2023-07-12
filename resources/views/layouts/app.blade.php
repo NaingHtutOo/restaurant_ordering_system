@@ -63,7 +63,7 @@
                 <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                <a class="d-block">Auth::user()->name</a>
+                <a class="d-block">{{ Auth::user()->name }}</a>
                 </div>
             </div>
             @endauth
@@ -75,14 +75,14 @@
                 <li class="nav-item menu-open">
                     <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('dishes.index') }}" 
+                        <a href="{{ route('dishes.index') }}"
                         class="nav-link {{Request::segment(1) == 'dishes' ? 'active' : ''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Dishes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('kitchens.order') }}" 
+                        <a href="{{ route('kitchens.order') }}"
                         class="nav-link {{Request::segment(1) == 'order' ? 'active' : ''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Orders</p>
